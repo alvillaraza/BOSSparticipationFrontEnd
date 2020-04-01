@@ -19,6 +19,7 @@ function Dashboard(props) {
   return (
     <div>
       <h2>Welcome to Your Dashboard</h2>
+      <button onClick={() => history.push('/add-activity')}>Add an Acitivity</button>
 
       <div className='activities-container'>
         {activities === undefined || activities.length === 0 ?

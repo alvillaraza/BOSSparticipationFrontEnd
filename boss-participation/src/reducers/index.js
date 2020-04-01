@@ -1,35 +1,37 @@
 const initialState = {
   isLoading: false,
-  error: '',
+  error: "",
   activities: [],
   isUpdating: false,
-  username: ''
+  username: ""
 };
 
 export const reducer = (state = initialState, action) => {
-  console.log('reducers/index.js', state, action);
+  console.log("reducers/index.js", state, action);
   switch (action.type) {
     case "GET_ACTIVITIES":
       return {
         ...state,
         isLoading: true
       };
-    
-    case 'SUCCESS':
+
+    case "SUCCESS":
       return {
         ...state,
         isLoading: false,
-        error: '',
+        error: "",
         activities: action.payload,
         isUpdating: false
-      }
-    
-      case "FAILURE":
-        return {
-          ...state,
-          error: action.payload,
-          isLoading: false,
-          isUpdating: false
-        };
+      };
+
+    case "FAILURE":
+      return {
+        ...state,
+        error: action.payload,
+        isLoading: false,
+        isUpdating: false
+      };
+    default:
+      return state;
   }
-}
+};
