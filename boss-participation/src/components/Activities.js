@@ -1,17 +1,22 @@
-import React from 'react';
-// import { useHistory } from 'react-router-dom';
-
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { FaEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 
 const Activities = props => {
-  // const history = useHistory();
+  const history = useHistory();
 
   return (
     <div>
       <h2>Your Activities</h2>
       {console.log(props)}
-      <div className='activities-container'>
+      <div className="activities-container">
         {props.activities.map(activity => (
           <div key={activity.id}>
+            <FaEdit onClick={() => history.push(`/update-activity/${activity.id}`)} />
+
+            <MdDelete onClick={() => props.deleteActivity(activity.id)} />
+
             <h3>{activity.name}</h3>
             <p>{activity.points}</p>
             <p>{activity.date}</p>
@@ -21,7 +26,7 @@ const Activities = props => {
         ))}
       </div>
     </div>
-  )
+  );
 };
 
 export default Activities;

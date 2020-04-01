@@ -1,8 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Activities from "./components/Activities";
+// import Activities from "./components/Activities";
 import Dashboard from './components/Dashboard';
 import ActivityForm from './components/ActivitiyForm';
+import UpdateActivityForm from './components/UpdateActivityForm';
 
 import "./App.css";
 // import axios from "axios";
@@ -27,9 +28,10 @@ function App() {
     <>
       <Router>
         <Switch>
-          <Route path="/activities" component={Activities} />
+          {/* <Route path="/activities" component={Activities} /> */}
           <Route path="/dashboard" component={Dashboard} />
-          <Route path='/add-activity' component={ActivityForm}/>
+          <Route path='/add-activity' component={ActivityForm} />
+          <Route path='/update-activity/:id' component={UpdateActivityForm} />
 
         </Switch>
       </Router>

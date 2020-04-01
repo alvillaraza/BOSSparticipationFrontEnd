@@ -26,3 +26,30 @@ export const addActivity = activity => dispatch => {
       dispatch({type: 'FAILURE', payload: 'Something went wrong.'})
   })
 }
+
+export const updateActivity = (activity, id) => dispatch => {
+  dispatch({ type: 'UPDATING' });
+
+  axiosWithAuth().put(`/activities/${id}`, activity)
+    .then(response => {
+      dispatch({ type: 'SUCCESS', payload: '' });
+      window.location.href = '/dashboard';
+    })
+    .catch(error => {
+      console.log(error)
+      dispatch({type: 'FAILURE', payload: 'Something went wrong.'})
+  })  
+}
+
+export const deleteActivity = id => dispatch => {
+  dispatch({ type: 'UPDATING' });
+
+  axiosWithAuth().delete(`/activities/${id}`)
+    .then(response => {
+    dispatch({type: 'SUCCESS', payload: ''})
+    })
+    .catch(error => {
+      console.log(error)
+      dispatch({type: 'FAILURE', payload: 'Something went wrong.'})
+  })
+}

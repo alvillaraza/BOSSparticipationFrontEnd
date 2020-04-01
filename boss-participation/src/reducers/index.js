@@ -31,6 +31,13 @@ export const reducer = (state = initialState, action) => {
         isLoading: false,
         isUpdating: false
       };
+    
+      case "UPDATING":
+      return {
+        ...state,
+        isUpdating: true
+      };
+    
     default:
       return state;
   }

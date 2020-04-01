@@ -1,14 +1,14 @@
 import React, {useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getActivities } from '../actions';
+import { getActivities, updateActivity, deleteActivity } from '../actions';
 
 import Activities from './Activities';
 
 function Dashboard(props) {
   console.log("Dasboard props", props);
   
-  const { isLoading, isUpdating, activities, getActivities } = props;
+  const { isLoading, isUpdating, activities, getActivities, updateActivity, deleteActivity } = props;
 
   const history = useHistory(); //can't remember what this is for
 
@@ -25,7 +25,7 @@ function Dashboard(props) {
         {activities === undefined || activities.length === 0 ?
           <p>Add An Acitivity to see it here</p> :
           !isLoading && !isUpdating && (
-            <Activities activities={activities}/>
+            <Activities activities={activities} deleteActivity={deleteActivity} updateActivity={updateActivity}/>
         )} 
       </div>
     </div>
@@ -43,4 +43,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, { getActivities })(Dashboard);
+export default connect(mapStateToProps, { getActivities, updateActivity, deleteActivity })(Dashboard);
