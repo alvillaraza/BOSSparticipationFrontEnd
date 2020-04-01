@@ -1,7 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Activities from './components/Activities';
-
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Activities from "./components/Activities";
+import Dashboard from './components/Dashboard';
 
 import "./App.css";
 // import axios from "axios";
@@ -24,12 +24,12 @@ function App() {
   // Display information from server
   return (
     <>
-      
       <Router>
         <Switch>
-          <Route path='/activities' component={Activities}/>
-        </Switch>
+          <Route path="/activities" component={Activities} />
+          <Route path="/dashboard" component={Dashboard} />
 
+        </Switch>
       </Router>
       {/* <h1 onClick={getItemsFromServer}>Get Activities!</h1>
 
