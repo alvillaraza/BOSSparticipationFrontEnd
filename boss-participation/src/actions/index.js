@@ -53,3 +53,8 @@ export const deleteActivity = id => dispatch => {
       dispatch({type: 'FAILURE', payload: 'Something went wrong.'})
   })
 }
+
+export const setUsername = username => dispatch =>
+{
+    dispatch({type: 'SET_USERNAME', payload: username});
+}

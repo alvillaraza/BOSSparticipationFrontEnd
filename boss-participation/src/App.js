@@ -4,26 +4,14 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from './components/Dashboard';
 import ActivityForm from './components/ActivitiyForm';
 import UpdateActivityForm from './components/UpdateActivityForm';
+import Login from './components/Login';
+import Signup from './components/Signup';
 
 import "./App.css";
 // import axios from "axios";
 
 function App() {
-  // const [listOfActivities, setListOfActivities] = useState([]);
 
-  // // Get information from server
-  // const getItemsFromServer = () => {
-  //   axios
-  //     .get("http://localhost:7001/api/activities")
-  //     .then(response => {
-  //       setListOfActivities(response.data)
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // };
-
-  // Display information from server
   return (
     <>
       <Router>
@@ -33,18 +21,14 @@ function App() {
           <Route path='/add-activity' component={ActivityForm} />
           <Route path='/update-activity/:id' component={UpdateActivityForm} />
 
+          <Route exact path='/' component={Login} />
+          <Route path="/sign-up" component={Signup} />
+      
+          
+
         </Switch>
       </Router>
-      {/* <h1 onClick={getItemsFromServer}>Get Activities!</h1>
-
-      {listOfActivities.map(activity => (
-        <div>
-          <h3>{activity.name}</h3>
-          <p>{activity.desc}</p>
-          <p>{activity.date}</p>
-          <p>{activity.points}</p>
-        </div>
-      ))} */}
+  
     </>
   );
 }
