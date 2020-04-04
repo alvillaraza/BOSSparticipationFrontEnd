@@ -6,19 +6,28 @@ const Signup = props => {
   const [user, setUser] = useState({
     username: '',
     password: '',
+    is_owner: false,
   });
 
   const { history } = props;
 
   const handleChanges = event => {
-    setUser({ ...user, [event.target.name]: event.target.value });
+   
+    if (event.target.type === 'checkbox') {
+      setUser({ ...user, [event.target.name]: !user.is_owner})
+    } else {
+      
+      setUser({ ...user, [event.target.name]: event.target.value });
+    }
+  
   };
 
   const register = event => {
     event.preventDefault();
     const loginUser = {
       username: user.username,
-      password: user.password
+      password: user.password,
+      is_owner: user.is_owner
     };
 
     axios.post('http://localhost:7001/api/auth/register', loginUser)
@@ -56,6 +65,10 @@ const Signup = props => {
             value={user.password}
           />
           {user.password.length > 0 && user.password.length < 8 ? 'Password too short' : ''}
+        </div>
+        <div>
+          <input type="checkbox" name="is_owner" onChange={handleChanges} value={user.is_owner} />
+          <label htmlFor='Are you the owner?'>I'm the owner</label>
         </div>
 
         {/* <div>

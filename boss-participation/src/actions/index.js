@@ -6,7 +6,7 @@ export const getActivities = () => dispatch => {
   axiosWithAuth().get('/activities')
     .then(response => {
       dispatch({ type: 'SUCCESS', payload: response.data });
-      console.log(response.data);
+      // console.log(response.data);
     })
     .catch(error => {
       console.log(error)

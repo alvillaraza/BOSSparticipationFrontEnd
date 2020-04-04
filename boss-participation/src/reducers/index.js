@@ -7,7 +7,7 @@ const initialState = {
 };
 
 export const reducer = (state = initialState, action) => {
-  console.log("reducers/index.js", state, action);
+  // console.log("reducers/index.js", state, action);
   switch (action.type) {
     case "GET_ACTIVITIES":
       return {
