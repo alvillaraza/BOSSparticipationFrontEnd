@@ -58,7 +58,10 @@ export const deleteActivity = id => dispatch => {
     });
 };
 
-export const setUsername = username => dispatch => {
-  console.log("2. TODO BUG HERE setUsername function receives:", username);
+export const setUserName = username => dispatch => {
   dispatch({ type: "SET_USERNAME", payload: username });
+};
+
+export const setUserInfo = userInfo => dispatch => {
+  dispatch({ type: "SET_USER_INFO", payload: userInfo });
 };

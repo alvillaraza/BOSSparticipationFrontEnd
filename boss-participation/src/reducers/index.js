@@ -3,12 +3,11 @@ const initialState = {
   error: "",
   activities: [],
   isUpdating: false,
-  username: ""
+  username: "",
+  userInformation: {}
 };
 
 export const reducer = (state = initialState, action) => {
-  console.log("3. reducers/index.js", action.type, action.payload);
-
   switch (action.type) {
     case "GET_ACTIVITIES":
       return {
@@ -40,11 +39,16 @@ export const reducer = (state = initialState, action) => {
       };
 
     case "SET_USERNAME":
-      console.log("4: SET_USERNAME", action.payload);
-
       return {
         ...state,
         username: action.payload
+      };
+
+    case "SET_USER_INFO":
+      console.log("3. SET_USER_INFO", action.type, action.payload);
+      return {
+        ...state,
+        userInformation: action.payload
       };
 
     default:

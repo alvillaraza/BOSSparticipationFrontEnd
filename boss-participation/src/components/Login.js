@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { setUsername } from "../actions";
+import { setUserName, setUserInfo } from "../actions";
 
 import axios from "axios";
 
 const LoginForm = props => {
   const [user, setUser] = useState({
-    username: 'owner',
+    username: "owner",
     password: "123456789"
   });
-
-  const { history } = props;
 
   const handleChange = event => {
     setUser({
@@ -27,10 +25,9 @@ const LoginForm = props => {
       .post("http://localhost:7001/api/auth/login", user)
       .then(response => {
         localStorage.setItem("token", response.data.token);
-
-        console.log("1. setUsername runs with:", user.username);
-        setUsername(user.username);
-        history.push("/dashboard");
+        props.setUserName(user.username);
+        props.setUserInfo(response.data);
+        props.history.push("/dashboard");
       })
       .catch(error => {
         console.log(error);
@@ -42,7 +39,7 @@ const LoginForm = props => {
       <form onSubmit={login}>
         <h2>Welcome Back!</h2>
         <div>
-          <label htmlFor="name">Username </label>
+          <label htmlFor="name">Username</label>
           <input
             id="name"
             type="text"
@@ -76,8 +73,9 @@ const LoginForm = props => {
 };
 
 const mapStateToProps = state => {
-  console.log("mapStateToProps Login", state);
   return state;
 };
 
-export default connect(mapStateToProps, { setUsername })(LoginForm);
+export default connect(mapStateToProps, { setUserName, setUserInfo })(
+  LoginForm
+);

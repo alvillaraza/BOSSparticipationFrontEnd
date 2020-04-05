@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { getActivities, updateActivity, deleteActivity } from "../actions";
-
 import Activities from "./Activities";
 
 function Dashboard(props) {
@@ -25,7 +24,11 @@ function Dashboard(props) {
 
   return (
     <div>
-      <h2>Welcome to Your Dashboard</h2>
+      <h2>Welcome to Your Dashboard, {props.username}</h2>
+      <h3>
+        You are{" "}
+        {props.userInformation.is_owner === 1 ? "an admin!" : "a basic user"}
+      </h3>
 
       <button onClick={() => history.push("/add-activity")}>
         Add an Acitivity
@@ -51,6 +54,7 @@ function Dashboard(props) {
 
 const mapStateToProps = state => {
   return {
+    ...state, // THE STUPIDITY
     isLoading: state.isLoading,
     error: state.error,
     activities: state.activities,
