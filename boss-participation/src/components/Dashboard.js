@@ -6,7 +6,7 @@ import { getActivities, updateActivity, deleteActivity } from "../actions";
 import Activities from "./Activities";
 
 function Dashboard(props) {
-  console.log("Dasboard props", props);
+  console.log("Dashboard props", props);
 
   const {
     isLoading,
@@ -26,6 +26,7 @@ function Dashboard(props) {
   return (
     <div>
       <h2>Welcome to Your Dashboard</h2>
+
       <button onClick={() => history.push("/add-activity")}>
         Add an Acitivity
       </button>
@@ -54,7 +55,8 @@ const mapStateToProps = state => {
     error: state.error,
     activities: state.activities,
     isUpdating: state.isUpdating,
-    username: state.username
+    username: state.username,
+    history: useHistory
   };
 };
 

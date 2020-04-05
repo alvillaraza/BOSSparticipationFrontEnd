@@ -7,7 +7,8 @@ const initialState = {
 };
 
 export const reducer = (state = initialState, action) => {
-  // console.log("reducers/index.js", state, action);
+  console.log("3. reducers/index.js", action.type, action.payload);
+
   switch (action.type) {
     case "GET_ACTIVITIES":
       return {
@@ -31,19 +32,21 @@ export const reducer = (state = initialState, action) => {
         isLoading: false,
         isUpdating: false
       };
-    
-      case "UPDATING":
+
+    case "UPDATING":
       return {
         ...state,
         isUpdating: true
       };
-    
-      case "SET_USERNAME":
-        return {
-          ...state,
-          username: action.payload
-        };
-    
+
+    case "SET_USERNAME":
+      console.log("4: SET_USERNAME", action.payload);
+
+      return {
+        ...state,
+        username: action.payload
+      };
+
     default:
       return state;
   }

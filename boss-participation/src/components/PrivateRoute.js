@@ -7,12 +7,9 @@ function PrivateRoute({ component: Component, ...rest }) {
     <Route
       {...rest}
       render={() => {
-        console.log("ls", localStorage.getItem("token"));
         if (localStorage.getItem("token")) {
-          console.log("Y");
           return <Component />;
         } else {
-          console.log("N");
           return <Redirect to="/" />;
         }
       }}

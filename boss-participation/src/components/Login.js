@@ -7,8 +7,8 @@ import axios from "axios";
 
 const LoginForm = props => {
   const [user, setUser] = useState({
-    username: "",
-    password: ""
+    username: 'owner',
+    password: "123456789"
   });
 
   const { history } = props;
@@ -23,19 +23,17 @@ const LoginForm = props => {
   const login = event => {
     event.preventDefault();
 
-    console.log(user);
-
     axios
       .post("http://localhost:7001/api/auth/login", user)
       .then(response => {
-        console.log('!***', response.data);
-        
         localStorage.setItem("token", response.data.token);
+
+        console.log("1. setUsername runs with:", user.username);
         setUsername(user.username);
         history.push("/dashboard");
       })
       .catch(error => {
-        console.log("error", error);
+        console.log(error);
       });
   };
 
@@ -78,9 +76,8 @@ const LoginForm = props => {
 };
 
 const mapStateToProps = state => {
-  return {
-    state
-  };
+  console.log("mapStateToProps Login", state);
+  return state;
 };
 
 export default connect(mapStateToProps, { setUsername })(LoginForm);

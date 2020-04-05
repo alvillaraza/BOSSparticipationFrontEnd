@@ -1,60 +1,64 @@
-import axiosWithAuth from '../utils/AxiosWithAuth';
+import axiosWithAuth from "../utils/AxiosWithAuth";
 
 export const getActivities = () => dispatch => {
-  dispatch({ type: 'GET_ACTIVITIES' });
+  dispatch({ type: "GET_ACTIVITIES" });
 
-  axiosWithAuth().get('/activities')
+  axiosWithAuth()
+    .get("/activities")
     .then(response => {
-      dispatch({ type: 'SUCCESS', payload: response.data });
+      dispatch({ type: "SUCCESS", payload: response.data });
       // console.log(response.data);
     })
     .catch(error => {
-      console.log(error)
-      dispatch({type: 'FAILURE', payload: 'Something went wrong.'})
-  })
-}
+      console.log(error);
+      dispatch({ type: "FAILURE", payload: "Something went wrong." });
+    });
+};
 
 export const addActivity = activity => dispatch => {
-  dispatch({ type: 'GET_CAMPAIGNS' });
-  
-  axiosWithAuth().post('/activities', activity)
+  dispatch({ type: "GET_CAMPAIGNS" });
+
+  axiosWithAuth()
+    .post("/activities", activity)
     .then(response => {
-      window.location.href = '/dashboard';
+      window.location.href = "/dashboard";
     })
     .catch(error => {
-      console.log(error)
-      dispatch({type: 'FAILURE', payload: 'Something went wrong.'})
-  })
-}
+      console.log(error);
+      dispatch({ type: "FAILURE", payload: "Something went wrong." });
+    });
+};
 
 export const updateActivity = (activity, id) => dispatch => {
-  dispatch({ type: 'UPDATING' });
+  dispatch({ type: "UPDATING" });
 
-  axiosWithAuth().put(`/activities/${id}`, activity)
+  axiosWithAuth()
+    .put(`/activities/${id}`, activity)
     .then(response => {
-      dispatch({ type: 'SUCCESS', payload: '' });
-      window.location.href = '/dashboard';
+      dispatch({ type: "SUCCESS", payload: "" });
+      window.location.href = "/dashboard";
     })
     .catch(error => {
-      console.log(error)
-      dispatch({type: 'FAILURE', payload: 'Something went wrong.'})
-  })  
-}
+      console.log(error);
+      dispatch({ type: "FAILURE", payload: "Something went wrong." });
+    });
+};
 
 export const deleteActivity = id => dispatch => {
-  dispatch({ type: 'UPDATING' });
+  dispatch({ type: "UPDATING" });
 
-  axiosWithAuth().delete(`/activities/${id}`)
+  axiosWithAuth()
+    .delete(`/activities/${id}`)
     .then(response => {
-    dispatch({type: 'SUCCESS', payload: ''})
+      dispatch({ type: "SUCCESS", payload: "" });
     })
     .catch(error => {
-      console.log(error)
-      dispatch({type: 'FAILURE', payload: 'Something went wrong.'})
-  })
-}
+      console.log(error);
+      dispatch({ type: "FAILURE", payload: "Something went wrong." });
+    });
+};
 
-export const setUsername = username => dispatch =>
-{
-    dispatch({type: 'SET_USERNAME', payload: username});
-}
+export const setUsername = username => dispatch => {
+  console.log("2. TODO BUG HERE setUsername function receives:", username);
+  dispatch({ type: "SET_USERNAME", payload: username });
+};

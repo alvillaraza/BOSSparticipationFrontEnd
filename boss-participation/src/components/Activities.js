@@ -11,7 +11,7 @@ const Activities = props => {
   return (
     <div>
       <h2>Your Activities</h2>
-      {/* {console.log(props)} */}
+      {/* TODO: {console.log(props)} */}
       <div className="activities-container">
         {props.activities.map(activity => (
           <div key={activity.id}>
