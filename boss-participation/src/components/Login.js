@@ -8,7 +8,7 @@ import axios from "axios";
 const LoginForm = props => {
   const [user, setUser] = useState({
     username: "owner",
-    password: "123456789"
+    password: "12345678"
   });
 
   const handleChange = event => {

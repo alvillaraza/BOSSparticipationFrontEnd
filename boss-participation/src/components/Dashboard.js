@@ -64,8 +64,8 @@ const mapStateToProps = state => {
     error: state.error,
     activities: state.activities,
     isUpdating: state.isUpdating,
-    username: state.username
-    // history: useHistory
+    username: state.username,
+    history: useHistory
   };
 };
 

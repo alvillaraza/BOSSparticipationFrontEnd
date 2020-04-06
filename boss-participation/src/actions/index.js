@@ -58,6 +58,10 @@ export const deleteActivity = id => dispatch => {
     });
 };
 
+export const addPoints = points => dispatch => {
+  dispatch({ type: "ADD_POINTS", payload: points});
+}
+
 export const setUserName = username => dispatch => {
   dispatch({ type: "SET_USERNAME", payload: username });
 };

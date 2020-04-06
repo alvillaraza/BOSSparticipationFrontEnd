@@ -3,6 +3,7 @@ const initialState = {
   error: "",
   activities: [],
   isUpdating: false,
+  totalPoints: 0,
   username: "",
   userInformation: {}
 };
@@ -37,6 +38,13 @@ export const reducer = (state = initialState, action) => {
         ...state,
         isUpdating: true
       };
+    
+    case "ADD_POINTS":
+      return {
+        ...state,
+        totalPoints: state.totalPoints + action.payload
+        //TODO: subtracts points when clicked again
+      }
 
     case "SET_USERNAME":
       return {

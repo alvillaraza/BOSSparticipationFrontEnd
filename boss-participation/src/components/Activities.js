@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
+import { connect } from "react-redux";
+import { addPoints } from '../actions';
 
 const Activities = props => {
   const history = useHistory();
@@ -30,7 +32,7 @@ const Activities = props => {
 
             <h3>{activity.name}</h3>
             
-            <h3>{!props.isOwner ? (<FaPlus /> ) : ''} {activity.points} points</h3>
+            <h3>{!props.isOwner ? (<FaPlus onClick={() => props.addPoints(activity.points)} /> ) : ''} {activity.points} points</h3>
             <p>{activity.date}</p>
             <p>{activity.activity_type}</p>
             <p>{activity.desc}</p>
@@ -41,4 +43,8 @@ const Activities = props => {
   );
 };
 
-export default Activities;
+const mapStateToProps = state => {
+  return state;
+}
+
+export default connect(mapStateToProps, { addPoints })(Activities);

@@ -10,9 +10,10 @@ import UpdateActivityForm from "./components/UpdateActivityForm";
 
 import "./App.css";
 
-///TO DO: how do you make it so that each user has admin rights or not
 ///TO DO: how do you make it so that each user can click on an activity and add it to their points
-///TODO: how to make it so that employees don't see delete and edit activities
+//TODO: subtracts points when clicked again, in reducer.index.js
+
+///BUG: when you click on edit or add an activity and you hit submit on form, it wipes userInfo
 
 function App() {
   return (
