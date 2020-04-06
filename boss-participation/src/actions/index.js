@@ -59,13 +59,15 @@ export const deleteActivity = id => dispatch => {
 };
 
 export const addPoints = points => dispatch => {
-  dispatch({ type: "ADD_POINTS", payload: points});
-}
+  dispatch({ type: "ADD_POINTS", payload: points });
+};
 
 export const setUserName = username => dispatch => {
   dispatch({ type: "SET_USERNAME", payload: username });
 };
 
 export const setUserInfo = userInfo => dispatch => {
+  console.log("userInfo", userInfo);
+
   dispatch({ type: "SET_USER_INFO", payload: userInfo });
 };

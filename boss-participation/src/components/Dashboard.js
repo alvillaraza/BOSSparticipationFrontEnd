@@ -28,6 +28,7 @@ function Dashboard(props) {
       <h3>
         You are {props.userInformation.is_owner ? "an admin!" : "a basic user"}
       </h3>
+      {!props.userInformation.is_owner ? <h2>Total Points: {props.userInformation.total_points} </h2> : ''}
 
       {props.userInformation.is_owner ? (
         <button onClick={() => history.push("/add-activity")}>
