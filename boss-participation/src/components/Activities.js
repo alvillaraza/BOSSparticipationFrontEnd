@@ -2,8 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import { FaPlus } from 'react-icons/fa';
-
+import { FaPlus } from "react-icons/fa";
 
 const Activities = props => {
   const history = useHistory();
@@ -15,12 +14,23 @@ const Activities = props => {
       <div className="activities-container">
         {props.activities.map(activity => (
           <div key={activity.id}>
-            <FaEdit onClick={() => history.push(`/update-activity/${activity.id}`)} />
 
-            <MdDelete onClick={() => props.deleteActivity(activity.id)} />
+
+            {props.isOwner ? (
+              <div>
+              <FaEdit
+                onClick={() => history.push(`/update-activity/${activity.id}`)}
+              />
+                <MdDelete onClick={() => props.deleteActivity(activity.id)} />
+                </div>
+            ) : (
+              ""
+              )}
+                      
 
             <h3>{activity.name}</h3>
-            <h3><FaPlus /> {activity.points}</h3>
+            
+            <h3>{!props.isOwner ? (<FaPlus /> ) : ''} {activity.points} points</h3>
             <p>{activity.date}</p>
             <p>{activity.activity_type}</p>
             <p>{activity.desc}</p>

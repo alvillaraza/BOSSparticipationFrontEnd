@@ -26,13 +26,16 @@ function Dashboard(props) {
     <div>
       <h2>Welcome to Your Dashboard, {props.username}</h2>
       <h3>
-        You are{" "}
-        {props.userInformation.is_owner === 1 ? "an admin!" : "a basic user"}
+        You are {props.userInformation.is_owner ? "an admin!" : "a basic user"}
       </h3>
 
-      <button onClick={() => history.push("/add-activity")}>
-        Add an Acitivity
-      </button>
+      {props.userInformation.is_owner ? (
+        <button onClick={() => history.push("/add-activity")}>
+          Add an Activity
+        </button>
+      ) : (
+        ""
+      )}
 
       <div className="activities-container">
         {activities === undefined || activities.length === 0 ? (
@@ -43,7 +46,9 @@ function Dashboard(props) {
             <Activities
               activities={activities}
               deleteActivity={deleteActivity}
-              updateActivity={updateActivity}
+                updateActivity={updateActivity}
+                isOwner={props.userInformation.is_owner}
+                
             />
           )
         )}
@@ -54,13 +59,13 @@ function Dashboard(props) {
 
 const mapStateToProps = state => {
   return {
-    ...state, // THE STUPIDITY
+    ...state,
     isLoading: state.isLoading,
     error: state.error,
     activities: state.activities,
     isUpdating: state.isUpdating,
-    username: state.username,
-    history: useHistory
+    username: state.username
+    // history: useHistory
   };
 };
 
